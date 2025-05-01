@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/question/question_screen.dart'; 
 import 'screens/edit_quiz/edit_quiz_screen.dart';
+import 'screens/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,6 +55,17 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: const Text('Edit Quiz'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Navegamos a la pantalla de login
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+              child: const Text('Login'),
             ),
           ],
         ),
