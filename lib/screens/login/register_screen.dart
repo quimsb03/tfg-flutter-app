@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'register_screen.dart'; // Assegura't d'importar la pantalla de registre
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final List<Color> _backgroundColors = [
     Colors.blue.shade100,
     Colors.purple.shade100,
@@ -45,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text("Register"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -76,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
-                  'Login',
+                  'Sign Up',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
@@ -89,42 +88,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('LOGIN'),
-                ),
-                const SizedBox(height: 10),
-                const Text('OR'),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/google_logo.png'),
-                      backgroundColor: Colors.transparent,
+                DropdownButtonFormField<String>(
+                  hint: const Text("Select your role"),
+                  items: const [
+                    DropdownMenuItem(
+                      value: "Student",
+                      child: Text("Student"),
                     ),
-                    SizedBox(width: 10),
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/facebook_logo.png'),
-                      backgroundColor: Colors.transparent,
+                    DropdownMenuItem(
+                      value: "Teacher",
+                      child: Text("Teacher"),
                     ),
                   ],
+                  onChanged: (value) {},
+                  decoration: const InputDecoration(labelText: 'Role'),
                 ),
                 const SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {
-                    // Navegar a la pantalla de registre
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                    );
-                  },
-                  child: const Text(
-                    "Are you not registered? Sign Up",
-                    style: TextStyle(fontSize: 16, color: Colors.blue),
-                  ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Register"),
                 ),
               ],
             ),
